@@ -358,7 +358,7 @@
     // reset any lingering callbacks, incase the previous payment failed.
     self.paymentAuthorizationBlock = nil;
 
-    PKPaymentRequest *request = [Stripe paymentRequestWithMerchantIdentifier:appleMerchantIdentifier];
+    PKPaymentRequest *request = [Stripe paymentRequestWithMerchantIdentifier: [self mechantIdFromArguments:command.arguments]];
 
     request.supportedNetworks = supportedPaymentNetworks;
 
@@ -367,7 +367,7 @@
     // All this data is loaded from the Cordova object passed in. See documentation.
     [request setCurrencyCode:[self currencyCodeFromArguments:command.arguments]];
     [request setCountryCode:[self countryCodeFromArguments:command.arguments]];
-    [request setMerchantIdentifier: [self mechantIdFromArguments:commands.arguments]];
+    [request setMerchantIdentifier: [self mechantIdFromArguments:command.arguments]];
     [request setRequiredBillingAddressFields:[self billingAddressRequirementFromArguments:command.arguments]];
     [request setRequiredShippingAddressFields:[self shippingAddressRequirementFromArguments:command.arguments]];
     [request setShippingType:[self shippingTypeFromArguments:command.arguments]];
