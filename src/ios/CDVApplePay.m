@@ -180,6 +180,12 @@
     }
 }
 
+- (NSString *)mechantIdFromArguments:(NSArray *)arguments
+{
+    NSString *merchantIdentifier = [[arguments objectAtIndex:0] objectForKey:@"merchantIdentifier"];
+    return merchantIdentifier;
+}
+
 - (NSString *)countryCodeFromArguments:(NSArray *)arguments
 {
     NSString *countryCode = [[arguments objectAtIndex:0] objectForKey:@"countryCode"];
@@ -352,8 +358,6 @@
     // reset any lingering callbacks, incase the previous payment failed.
     self.paymentAuthorizationBlock = nil;
 
-    NSString * appleMerchantIdentifier = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"AppleMerchantIdentifier"];
-
     PKPaymentRequest *request = [Stripe paymentRequestWithMerchantIdentifier:appleMerchantIdentifier];
 
     request.supportedNetworks = supportedPaymentNetworks;
@@ -363,7 +367,7 @@
     // All this data is loaded from the Cordova object passed in. See documentation.
     [request setCurrencyCode:[self currencyCodeFromArguments:command.arguments]];
     [request setCountryCode:[self countryCodeFromArguments:command.arguments]];
-    [request setMerchantIdentifier:appleMerchantIdentifier];
+    [request setMerchantIdentifier: [self mechantIdFromArguments:commands.arguments]];
     [request setRequiredBillingAddressFields:[self billingAddressRequirementFromArguments:command.arguments]];
     [request setRequiredShippingAddressFields:[self shippingAddressRequirementFromArguments:command.arguments]];
     [request setShippingType:[self shippingTypeFromArguments:command.arguments]];
