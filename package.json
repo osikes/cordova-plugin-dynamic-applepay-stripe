@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-dynamic-applepay-stripe",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Cordova plugin to provide Apple Pay functionality with Stripe integration. Allowing dynamic configurable use of merchant id and Stripe publishable key.",
   "main": "www/applepay.js",
   "scripts": {
