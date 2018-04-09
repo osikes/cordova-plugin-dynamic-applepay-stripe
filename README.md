@@ -5,6 +5,8 @@
 Updated to provide additional data access to the plugin, test calls, and compatibility
 with newer versions of Cordova. Uses a Promise based interface in JavaScript.
 
+Specifically created this version to provide methods to dynamically change the merchant id or stripe publishable key.
+
 This plugin is integrated to Stripe, if you want an integrated-less plugin you can use
 [cordova-plugin-applepay](https://www.npmjs.com/package/cordova-plugin-applepay)
 
@@ -31,6 +33,12 @@ The methods available all return promises, or accept success and error callbacks
 - ApplePay.canMakePayments
 - ApplePay.makePaymentRequest
 - ApplePay.completeLastTransaction
+
+## ApplePay.setMerchantId
+Pass in as a string the desired merchantId for use in plugin. Will return a promise when function completes.
+
+## ApplePay.setPublishableKey
+Pass in your Stripe publishable api key for use in plugin. Will return a promise when function completes.
 
 ## ApplePay.canMakePayments
 Detects if the current device supports Apple Pay and has any *capable* cards registered.
