@@ -4,6 +4,7 @@
   "description": "A Cordova plugin to provide Apple Pay functionality with Stripe integration. Allowing dynamic configurable use of merchant id and Stripe publishable key.",
   "main": "www/applepay.js",
   "scripts": {
+    "postinstall": "node ./scripts/link",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
